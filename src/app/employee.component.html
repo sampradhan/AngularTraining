@@ -1,0 +1,31 @@
+<div class="container">
+<div class="panel panel-primary">
+    <div class="panel-heading">{{title}}</div>
+    <div class="panel-body">
+        Filter By Name :<input type='text' [(ngModel)]="filterByName"/>
+        Filtered By :{{filterByName}}
+        <div class='clearfix'></div>
+        <button (click)="toggleImage()" class='btn btn-primary'>{{showHideText}}</button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Employee Code</th>
+                <th>Employee Name</th>
+                <th>Designation</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees | employeeFilterByName:filterByName">
+                <td><img [src]="employee.imageUrl" *ngIf="showImage" [style.width.px]="imageWidth"/></td>
+                <td>{{employee.employeeId}}</td>
+                <td>{{employee.employeeName | uppercase}}</td>
+                <td>{{employee.designation | lowercase}}</td>
+                <td>{{employee.department}}</td>
+            </tr>
+        </tbody>
+    </table> 
+    </div>
+</div>
+</div>
